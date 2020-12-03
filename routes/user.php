@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return 'Hello';
+Route::post('/login', 'App\Http\Controllers\UserController@login');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::delete('logout', 'App\Http\Controllers\UserController@logout');
 });
-Route::post('/auth', 'App\Http\Controllers\UserController@login');
