@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', 'App\Http\Controllers\UserController@login');
-
+Route::get( '/warning', function () {
+    return "Please login first";
+})->name('login');
 Route::middleware('auth:sanctum')->group(function () {
     Route::delete('logout', 'App\Http\Controllers\UserController@logout');
 });

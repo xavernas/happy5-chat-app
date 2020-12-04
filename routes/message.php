@@ -12,5 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::post('/login', 'App\Http\Controllers\UserController@login');
+Route::get( '/warning', function () {
+    return "Please login first";
+})->name('login');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('view', 'App\Http\Controllers\MessageController@view');
+    Route::post('send', 'App\Http\Controllers\MessageController@send');
+    Route::get('conversation', 'App\Http\Controllers\MessageController@conversation');
+    Route::get('conversation/{id}', 'App\Http\Controllers\MessageController@detail_conversation');
+    
+});

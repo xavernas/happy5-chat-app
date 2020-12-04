@@ -14,10 +14,11 @@ class Message extends Model
      *
      * @var array
      */
+    protected $table = 'message';
     protected $fillable = [
-        'username',
-        'email',
-        'password',
+        'conversation_id',
+        'sender_sent',
+        'message',
     ];
 
     /**
@@ -25,17 +26,10 @@ class Message extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
